@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Hero } from './../hero';
 import { User } from './../model/user';
 
 
@@ -10,8 +9,9 @@ import { User } from './../model/user';
 })
 export class TemplateDrivenFormComponent implements OnInit {
 
-  model:any = {}
+  
   user = new User()
+  
   constructor() { }
 
   ngOnInit(): void {

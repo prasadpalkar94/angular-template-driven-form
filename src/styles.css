@@ -6,5 +6,10 @@
   .ng-invalid:not(form)  {
     border-left: 2px solid #a94442; /* red */
   }
+
+  .red{
+    color:red;
+  }
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
