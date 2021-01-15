@@ -1,0 +1,89 @@
+<p>template-driven-form works!</p>
+<button type="button" routerLink="/reactive-form" class="btn btn-primary">Go to reactive-form</button>
+<br><br>
+
+<div class="container">
+    <div class="col-md-5">
+    <div class="jumbotron">
+        <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+            <div class="form-group ">
+                <label for="name">Name:</label>
+                <input  type="text" name="name" class="form-control"  
+                required [(ngModel)]="user.name" #name="ngModel" 
+                [ngClass]="{'is-invalid':f.submitted && name.invalid}">
+                <!-- <div *ngIf="name.errors?.required">Enter a name</div> -->
+                <div *ngIf="name.touched && !name.valid" >
+                  Name is required
+                </div>
+                  
+                  
+               
+
+            </div>
+
+              
+
+
+              <div class="radio">
+                  <label>Gender</label><br>
+                <label><input type="radio" name="optradio" >&nbsp;Male</label>&nbsp;&nbsp;
+                <label><input type="radio" name="optradio" >&nbsp;Female</label>
+              </div>
+
+            <div class="form-group">
+              <label for="email">Email address:</label>
+              <input type="email" class="form-control" 
+              [(ngModel)]="model.email" #email="ngModel" name="email"
+                [ngClass]="{'is-invalid':f.submitted && email.invalid}"
+              required >
+              <div *ngIf="email && email.valid && (email.dirty || email.touched)">
+                Email is Required
+              </div>
+              
+            </div>
+
+            <div class="form-group">
+              <label for="pwd">Password:</label>
+              <input type="password" class="form-control"  
+              [(ngModel)]="model.password" #password="ngModel" name="password"
+              [ngClass]="{'is-invalid':f.submitted && password.invalid}"s
+              required>
+              <div  *ngIf="password && password.valid && (password.dirty || password.touched)">
+              </div>
+              
+            </div>
+
+            <div class="form-group">
+                <label for="comment">Comment:</label>
+                <textarea class="form-control" rows="5"  name="comment"
+                [(ngModel)]="model.comment" #comment="ngModel" 
+                [ngClass]="{'is-invalid':f.submitted && comment.invalid}"
+                required></textarea>
+                <div class="invalid-feedback">
+                  <div>Comment is required</div>
+                </div>
+              </div>
+
+            <div class="form-group">
+                <label for="sel1">Select list:</label>
+                <select class="form-control"  required>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                </select>
+                <!-- <div class="invalid-feedback">
+                  select valid option
+                </div> -->
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox"  required> Remember me</label>
+              <!-- <div class="invalid-feedback">
+                Please Tick the option
+              </div> -->
+            </div>
+            <button type="submit" class="btn btn-primary" >Submit</button>
+          </form>
+        </div>
+    </div>
+</div>
