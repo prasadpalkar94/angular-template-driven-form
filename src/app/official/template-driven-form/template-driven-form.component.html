@@ -33,23 +33,43 @@
             <div class="form-group">
               <label for="email">Email address:</label>
               <input type="email" class="form-control" 
-              [(ngModel)]="model.email" #email="ngModel" name="email"
+              [(ngModel)]="user.email" #email="ngModel" name="email"
                 [ngClass]="{'is-invalid':f.submitted && email.invalid}"
               required >
-              <div *ngIf="email && email.valid && (email.dirty || email.touched)">
+              <!-- <div *ngIf="email && email.valid && (email.dirty || email.touched)">
                 Email is Required
+              </div> -->
+
+              <div class="invalid-feedback">
+                enter email
+              </div>
+              <div *ngIf="email.touched && !email.valid">
+                <div *ngIf="email.errors?.required" >
+                  Email is Required.
+                </div>
+                <div *ngIf="email.errors?.email">
+                  Enter a valid email.
+                </div>
               </div>
               
             </div>
 
             <div class="form-group">
               <label for="pwd">Password:</label>
-              <input type="password" class="form-control"  
-              [(ngModel)]="model.password" #password="ngModel" name="password"
+              <input minlength="6" type="password" class="form-control"  
+              [(ngModel)]="user.password" #password="ngModel" name="password"
               [ngClass]="{'is-invalid':f.submitted && password.invalid}"s
               required>
-              <div  *ngIf="password && password.valid && (password.dirty || password.touched)">
+              <div *ngIf="password.touched && !password.valid">
+                <div *ngIf="password.errors?.required">
+                  Password is Required.
+                </div>
+                <div *ngIf="password.errors?.minlength">
+                  Password atleast 6 characters.
+                </div>
               </div>
+
+              
               
             </div>
 
